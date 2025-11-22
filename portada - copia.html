@@ -1,0 +1,228 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Portada Animada</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      font-family: "Playfair Display", serif;
+      background: linear-gradient(135deg, #f06bce 0%, #ffd1dc 30%, #d7ff6f 100%);
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    h1 {
+      font-family: 'Pacifico', cursive;
+      text-align: center;
+      font-size: 34px;
+      margin: 40px 0 100px 0;
+      color: #8a2a5c;
+    }
+
+    .heart-wrapper {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      width: 100%;
+    }
+
+    /* Corazón enorme principal */
+    .big-heart {
+      width: 150px;
+      height: 150px;
+      background: radial-gradient(circle at 30% 30%, #ff4fa2, #ff7abf);
+      position: relative;
+      transform: rotate(-45deg);
+      cursor: pointer;
+      transition: transform 0.3s ease;
+    }
+
+    .big-heart::before,
+    .big-heart::after {
+      content: "";
+      position: absolute;
+      width: 150px;
+      height: 150px;
+      background: radial-gradient(circle at 30% 30%, #ff4fa2, #ff7abf);
+      border-radius: 50%;
+    }
+
+    .big-heart::before {
+      top: -75px;
+      left: 0;
+    }
+
+    .big-heart::after {
+      left: 75px;
+      top: 0;
+    }
+
+    .big-heart:active {
+      transform: rotate(-45deg) scale(0.95);
+    }
+
+    /* Animación de corazones flotando */
+    .content {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%,-50%);
+      width: 200px;
+      height: 200px;
+      pointer-events: none;
+    }
+
+    .float-icon {
+      position: absolute;
+      width: 50px;
+      height: 50px;
+      opacity: 0;
+      transform: scale(0.4);
+      animation: rise 2.6s ease forwards;
+    }
+
+    @keyframes rise {
+      0% {opacity: 0; transform: translateY(20px) scale(0.4);}
+      30% {opacity: 1;}
+      100% {opacity: 0; transform: translateY(-150px) scale(1);}
+    }
+
+    .i1 { left: 20%; animation-delay: .2s; }
+    .i2 { left: 60%; animation-delay: .4s; }
+    .i3 { left: 40%; animation-delay: .6s; }
+    .i4 { left: 10%; animation-delay: .8s; }
+
+    .icon-img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+
+    /* Zona de enlaces finales */
+    .links-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      width: 60%;
+      max-width: 600px;
+      gap: 50px;
+      margin-top: 150px;
+      margin-bottom: 50px;
+      position: relative;
+    }
+
+    .links-container img {
+      width: 60px;
+      height: 60px;
+      opacity: 0;
+      transform: translateX(0);
+      transition: opacity 1s ease, transform 1s cubic-bezier(.68,-0.55,.27,1.55);
+      cursor: pointer;
+    }
+
+    .links-container.show img.estrella {
+      opacity: 1;
+      transform: translateX(0); /* rebote desde izquierda */
+      animation: slideFromLeft 1s forwards;
+    }
+
+    .links-container.show img.corazon {
+      opacity: 1;
+      transform: translateX(0); /* rebote desde derecha */
+      animation: slideFromRight 1s forwards;
+    }
+
+    @keyframes slideFromLeft {
+      0% { transform: translateX(-200px); }
+      70% { transform: translateX(30px); }
+      100% { transform: translateX(0); }
+    }
+
+    @keyframes slideFromRight {
+      0% { transform: translateX(200px); }
+      70% { transform: translateX(-30px); }
+      100% { transform: translateX(0); }
+    }
+
+    .links-container img:hover {
+      transform: scale(1.2);
+    }
+
+  </style>
+</head>
+
+<body>
+
+  <h1>Cartas para mi princesa</h1>
+
+  <div class="heart-wrapper">
+    <div class="big-heart" id="bigHeart"></div>
+  </div>
+
+  <div class="content" id="iconsArea"></div>
+
+  <!-- Zona de enlaces finales -->
+  <div class="links-container" id="finalLinks">
+    <a href="https://revillaxx.github.io/TeAmo/Index.html" target="_blank">
+      <img src="estrella.png" alt="Estrella" class="estrella">
+    </a>
+    <a href="https://revillaxx.github.io/TeAmo/Index.html" target="_blank">
+      <img src="corazon.png" alt="Corazón" class="corazon">
+    </a>
+  </div>
+
+  <script>
+    const bigHeart = document.getElementById('bigHeart');
+    const iconsArea = document.getElementById('iconsArea');
+    const finalLinks = document.getElementById('finalLinks');
+
+    const icons = [
+      'data:image/svg+xml;utf8,<svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg"><path fill="%23ff4fa2" d="M32 56S6 38 6 20c0-7.7 6.3-14 14-14 5.4 0 10 3 12 7.4C34 9 38.6 6 44 6c7.7 0 14 6.3 14 14 0 18-26 36-26 36z"/></svg>',
+      'data:image/svg+xml;utf8,<svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg"><path fill="%23ffd86b" d="M32 4l7.9 16 17.6 2.6-12.7 12.3 3 17.5L32 44l-15.8 8.4 3-17.5L6.5 22.6 24.1 20z"/></svg>',
+      'data:image/svg+xml;utf8,<svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg"><path fill="%23ff7abf" d="M32 56S6 38 6 20c0-7.7 6.3-14 14-14 5.4 0 10 3 12 7.4C34 9 38.6 6 44 6c7.7 0 14 6.3 14 14 0 18-26 36-26 36z"/><circle cx="24" cy="26" r="3" fill="black"/><circle cx="40" cy="26" r="3" fill="black"/><path d="M26 34c2 2 10 2 12 0" stroke="black" stroke-width="2" fill="none"/></svg>',
+      'data:image/svg+xml;utf8,<svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg"><path fill="%23ffe08f" d="M32 2l9 18 20 3-14.5 14 3.5 20L32 46l-18 11 3.5-20L4 23l20-3z"/></svg>'
+    ];
+
+    let clicked = false;
+
+    bigHeart.addEventListener('click', () => {
+      if(clicked) return;
+      clicked = true;
+
+      launchIcons();
+
+      setTimeout(() => {
+        finalLinks.classList.add('show');
+        finalLinks.scrollIntoView({behavior: "smooth"});
+      }, 3000);
+    });
+
+    function launchIcons() {
+      iconsArea.innerHTML = '';
+      for (let i = 0; i < icons.length; i++) {
+        const el = document.createElement('div');
+        el.className = 'float-icon i' + (i+1);
+        el.style.animationDelay = (0.2 * i) + 's';
+        const img = document.createElement('img');
+        img.className = 'icon-img';
+        img.src = icons[i];
+        el.appendChild(img);
+        iconsArea.appendChild(el);
+      }
+    }
+  </script>
+
+</body>
+</html>
