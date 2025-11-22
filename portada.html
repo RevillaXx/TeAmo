@@ -1,0 +1,155 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Portada - Cartas de amor</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --bg1: #fce7f3;
+      --bg2: #ffeef0;
+      --accent: #ff6b9a;
+      --muted: rgba(0,0,0,0.06);
+    }
+    html,body{height:100%;margin:0;font-family:'Playfair Display', serif;background:linear-gradient(135deg,var(--bg1) 0%, #fff6e6 40%, #e6fff1 100%);-webkit-font-smoothing:antialiased}
+
+    .wrap{
+      min-height:100%;display:flex;align-items:center;justify-content:center;padding:28px;box-sizing:border-box;
+    }
+
+    .card{
+      width:100%;max-width:1100px;background:linear-gradient(180deg, rgba(255,255,255,0.9), rgba(255,250,245,0.9));border-radius:18px;padding:28px;box-shadow:0 14px 34px rgba(0,0,0,0.12);border:1px solid var(--muted);position:relative;overflow:hidden;
+    }
+
+    h1{font-family:'Pacifico',cursive;text-align:center;margin:4px 0 8px;font-size:36px;color:#7a2350}
+    .subtitle{text-align:center;color:#6b6b6b;margin-bottom:18px}
+
+    /* area of clickable icons */
+    .sky{
+      position:relative;height:420px;border-radius:12px;background:radial-gradient(circle at 20% 10%, rgba(255,255,255,0.6), transparent 8%), linear-gradient(180deg, rgba(255,240,250,0.25), rgba(255,255,255,0.0));border:1px dashed rgba(0,0,0,0.04);display:flex;align-items:center;justify-content:center;overflow:hidden;
+    }
+
+    /* decorative floating layer */
+    .float-layer{position:absolute;inset:0;pointer-events:none}
+
+    /* icon common */
+    .icon{
+      width:64px;height:64px;display:inline-grid;place-items:center;cursor:pointer;transition:transform .28s ease, filter .28s ease;position:absolute;z-index:3;
+    }
+    .icon svg{width:100%;height:100%;filter:drop-shadow(0 8px 12px rgba(0,0,0,0.12));}
+    .icon:hover{transform:translateY(-8px) scale(1.12)}
+
+    /* heart colors */
+    .heart svg path{fill:#ff527a}
+    .star svg path{fill:#ffd86b}
+
+    /* subtle floating animation with different speeds via data-speed */
+    @keyframes floaty{0%{transform:translateY(0) rotate(0deg)}50%{transform:translateY(-16px) rotate(6deg)}100%{transform:translateY(0) rotate(0deg)}}
+
+    .float{animation-name:floaty;animation-duration:6s;animation-iteration-count:infinite;animation-timing-function:ease-in-out}
+
+    /* positions for demo (mobile friendly: scaled) */
+    .icon[data-pos="a"]{left:8%;top:18%}
+    .icon[data-pos="b"]{left:26%;top:36%}
+    .icon[data-pos="c"]{left:48%;top:12%}
+    .icon[data-pos="d"]{left:70%;top:28%}
+    .icon[data-pos="e"]{left:86%;top:50%}
+    .icon[data-pos="f"]{left:60%;top:66%}
+    .icon[data-pos="g"]{left:34%;top:70%}
+
+    /* caption */
+    .caption{position:absolute;left:20px;bottom:14px;font-size:14px;color:#5b5b5b}
+
+    /* small screens adjustments */
+    @media (max-width:700px){
+      .sky{height:320px}
+      .icon{width:52px;height:52px}
+      h1{font-size:30px}
+    }
+
+  </style>
+</head>
+
+<body>
+  <main class="wrap">
+    <section class="card" role="main" aria-labelledby="portadaTitle">
+      <h1 id="portadaTitle">Cartas para mi princesa</h1>
+      <div class="subtitle">Haz click en una estrella o corazón para leer una carta</div>
+
+      <div class="sky" id="skyContainer" aria-hidden="false">
+        <div class="float-layer" aria-hidden="true"></div>
+
+        <!-- Icons — cada icono tiene un data-link que apunta a la carta -->
+        <!-- Reemplaza la ruta por la de tu carta. Aquí apunta al archivo subido en tu entorno: /mnt/data/Index.html.html -->
+
+        <button class="icon heart float" data-pos="a" data-link="/mnt/data/Index.html.html" aria-label="Carta: Para la mujer de mi vida">
+          <svg viewBox="0 0 24 24" class="heart" xmlns="http://www.w3.org/2000/svg" role="img" aria-hidden="true">
+            <path d="M12 21s-7.5-4.35-10-7.5C-1 9.5 3.5 4 8.5 6.5 10.3 7.6 12 9 12 9s1.7-1.4 3.5-2.5C20.5 4 25 9.5 22 13.5 19.5 16.65 12 21 12 21z"/>
+          </svg>
+        </button>
+
+        <button class="icon star float" data-pos="b" data-link="/mnt/data/Index.html.html" aria-label="Carta">
+          <svg viewBox="0 0 24 24" class="star" xmlns="http://www.w3.org/2000/svg" role="img" aria-hidden="true">
+            <path d="M12 2l2.6 6.6L21 10l-5 3.8L17.2 21 12 17.6 6.8 21 7.9 13.8 3 10l6.4-1.4L12 2z"/>
+          </svg>
+        </button>
+
+        <button class="icon heart float" data-pos="c" data-link="/mnt/data/Index.html.html" aria-label="Carta">
+          <svg viewBox="0 0 24 24" class="heart" xmlns="http://www.w3.org/2000/svg" role="img" aria-hidden="true">
+            <path d="M12 21s-7.5-4.35-10-7.5C-1 9.5 3.5 4 8.5 6.5 10.3 7.6 12 9 12 9s1.7-1.4 3.5-2.5C20.5 4 25 9.5 22 13.5 19.5 16.65 12 21 12 21z"/>
+          </svg>
+        </button>
+
+        <button class="icon star float" data-pos="d" data-link="/mnt/data/Index.html.html" aria-label="Carta">
+          <svg viewBox="0 0 24 24" class="star" xmlns="http://www.w3.org/2000/svg" role="img" aria-hidden="true">
+            <path d="M12 2l2.6 6.6L21 10l-5 3.8L17.2 21 12 17.6 6.8 21 7.9 13.8 3 10l6.4-1.4L12 2z"/>
+          </svg>
+        </button>
+
+        <button class="icon heart float" data-pos="e" data-link="/mnt/data/Index.html.html" aria-label="Carta">
+          <svg viewBox="0 0 24 24" class="heart" xmlns="http://www.w3.org/2000/svg" role="img" aria-hidden="true">
+            <path d="M12 21s-7.5-4.35-10-7.5C-1 9.5 3.5 4 8.5 6.5 10.3 7.6 12 9 12 9s1.7-1.4 3.5-2.5C20.5 4 25 9.5 22 13.5 19.5 16.65 12 21 12 21z"/>
+          </svg>
+        </button>
+
+        <button class="icon star float" data-pos="f" data-link="/mnt/data/Index.html.html" aria-label="Carta">
+          <svg viewBox="0 0 24 24" class="star" xmlns="http://www.w3.org/2000/svg" role="img" aria-hidden="true">
+            <path d="M12 2l2.6 6.6L21 10l-5 3.8L17.2 21 12 17.6 6.8 21 7.9 13.8 3 10l6.4-1.4L12 2z"/>
+          </svg>
+        </button>
+
+        <button class="icon heart float" data-pos="g" data-link="/mnt/data/Index.html.html" aria-label="Carta">
+          <svg viewBox="0 0 24 24" class="heart" xmlns="http://www.w3.org/2000/svg" role="img" aria-hidden="true">
+            <path d="M12 21s-7.5-4.35-10-7.5C-1 9.5 3.5 4 8.5 6.5 10.3 7.6 12 9 12 9s1.7-1.4 3.5-2.5C20.5 4 25 9.5 22 13.5 19.5 16.65 12 21 12 21z"/>
+          </svg>
+        </button>
+
+        <div class="caption">Pulsa en un icono para abrir la carta.</div>
+      </div>
+
+    </section>
+  </main>
+
+  <script>
+    // Añade diferentes duraciones para cada icono para que el movimiento parezca natural
+    document.querySelectorAll('.icon.float').forEach((el, i) => {
+      const speed = 5 + (i % 3) * 2 + Math.random()*2; // entre 5 y ~11s
+      el.style.animationDuration = speed + 's';
+      el.style.animationDelay = (Math.random()*2) + 's';
+
+      // abrir la carta al hacer click
+      el.addEventListener('click', () => {
+        const link = el.getAttribute('data-link');
+        // si la ruta es local en tu entorno (/mnt/data/...), la plataforma donde publiques puede necesitar
+        // que ajustes la ruta. Aquí usamos location.href para facilitar pruebas locales.
+        if(link){
+          location.href = link;
+        }
+      });
+    });
+  </script>
+</body>
+</html>
