@@ -1,239 +1,335 @@
 <!doctype html>
 <html lang="es">
 <head>
-  <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-N32PNFMB9F"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Te amo</title>
 
-  gtag('config', 'G-N32PNFMB9F');
-</script>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Te amo</title>
+<!-- FUENTES estilo escritura con pluma -->
+<link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&family=Homemade+Apple&display=swap" rel="stylesheet">
 
-  <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+html, body {
+  margin: 0;
+  padding: 0;
+  font-family: "Playfair Display", serif;
+  background: radial-gradient(circle, #1b002d, #000);
+  color: #ffe8ff;
+  overflow-x: hidden;
+  min-height: 100vh;
+}
 
-  <style>
-    html, body {
-      margin: 0;
-      padding: 0;
-      font-family: "Playfair Display", serif;
-      background: linear-gradient(135deg, #f06bce 0%, #ffd1dc 30%, #d7ff6f 100%);
-      -webkit-font-smoothing: antialiased;
-      overflow-x: hidden;
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-    }
+/* PARTICULAS (bajan lentamente) */
+.sparkle, .heartParticle {
+  position: fixed;
+  border-radius: 50%;
+  opacity: 0.8;
+  animation: floatDown linear infinite;
+  z-index: 1;
+}
+.sparkle { width: 6px; height: 6px; background: white; }
+.heartParticle { width: 12px; height: 12px; background: radial-gradient(circle, #ff79c6, #ff0066); transform: rotate(45deg); }
+@keyframes floatDown { 0% { transform: translateY(0) scale(1); opacity: 0.95; } 100% { transform: translateY(100vh) scale(.3); opacity: 0; } }
 
-    h1 {
-      font-family: 'Pacifico', cursive;
-      text-align: center;
-      font-size: 34px;
-      margin: 40px 0 100px 0;
-      color: #8a2a5c;
-    }
+/* ESTRELLAS FUGACES con rastro y tamaño mayor */
+.shooting-star {
+  position: fixed;
+  width: 6px; height: 6px;
+  background: linear-gradient(90deg, white, rgba(255,255,255,0));
+  border-radius: 50%;
+  box-shadow: 0 0 8px white, 0 0 14px white;
+  z-index: 4;
+  animation: shoot linear forwards;
+}
+@keyframes shoot {
+  0% { transform: translate(0,0) scale(1); opacity: 1; }
+  100% { transform: translate(500px,500px) scale(0.5); opacity: 0; }
+}
 
-    .heart-wrapper {
-      flex: 1;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      position: relative;
-      width: 100%;
-    }
+/* TITULO */
+h1 {
+  font-family: 'Dancing Script', cursive;
+  text-align: center;
+  font-size: 40px;
+  margin: 40px 0 20px 0;
+  color: #ffc8ff;
+  text-shadow: 0 0 12px #ff70d8;
+}
 
-    /* Corazón enorme principal */
-    .big-heart {
-      width: 150px;
-      height: 150px;
-      background: radial-gradient(circle at 30% 30%, #ff4fa2, #ff7abf);
-      position: relative;
-      transform: rotate(-45deg);
-      cursor: pointer;
-      transition: transform 0.3s ease;
-    }
+/* CORAZÓN */
+.heart-wrapper {
+  height: 280px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
 
-    .big-heart::before,
-    .big-heart::after {
-      content: "";
-      position: absolute;
-      width: 150px;
-      height: 150px;
-      background: radial-gradient(circle at 30% 30%, #ff4fa2, #ff7abf);
-      border-radius: 50%;
-    }
+.big-heart {
+  width: 150px;
+  height: 150px;
+  background: radial-gradient(circle at 30% 30%, #ff4fa2, #ff7abf);
+  position: relative;
+  transform: rotate(-45deg);
+  cursor: pointer;
+  animation: heartbeat 1.4s infinite ease-in-out, rainbowGlow 6s infinite linear;
+  z-index: 8;
+  box-shadow: 0 8px 40px rgba(255,90,160,0.15);
+}
+.big-heart::before, .big-heart::after {
+  content: "";
+  position: absolute;
+  width: 150px;
+  height: 150px;
+  background: inherit;
+  border-radius: 50%;
+}
+.big-heart::before { top: -75px; left: 0; }
+.big-heart::after { left: 75px; top: 0; }
 
-    .big-heart::before {
-      top: -75px;
-      left: 0;
-    }
+@keyframes heartbeat {
+  0% { transform: rotate(-45deg) scale(1); }
+  20% { transform: rotate(-45deg) scale(1.12); }
+  35% { transform: rotate(-45deg) scale(1); }
+  60% { transform: rotate(-45deg) scale(1.09); }
+  100% { transform: rotate(-45deg) scale(1); }
+}
+@keyframes rainbowGlow {
+  0% { filter: drop-shadow(0 0 10px rgba(255,0,100,0.8)); }
+  25% { filter: drop-shadow(0 0 10px rgba(255,200,0,0.8)); }
+  50% { filter: drop-shadow(0 0 10px rgba(0,200,120,0.8)); }
+  75% { filter: drop-shadow(0 0 10px rgba(0,120,255,0.8)); }
+  100% { filter: drop-shadow(0 0 10px rgba(180,60,255,0.8)); }
+}
 
-    .big-heart::after {
-      left: 75px;
-      top: 0;
-    }
+/* ICONOS DEBAJO DEL CORAZÓN */
+.icon-links {
+  display: none; /* Solo aparece al clickear */
+  justify-content: center;
+  gap: 40px;
+  margin-top: 12px;
+  z-index: 10;
+  pointer-events: auto;
+}
+.icon-links a img {
+  width: 70px; height: 70px;
+  transition: transform 0.3s ease;
+  will-change: transform, opacity;
+}
+.icon-links a:hover img { transform: scale(1.3) rotate(0deg); }
 
-    .big-heart:active {
-      transform: rotate(-45deg) scale(0.95);
-    }
+/* ICONOS FLOTANTES */
+.content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  width: 300px;
+  height: 300px;
+  pointer-events: none;
+  z-index: 9;
+}
+.float-icon {
+  position: absolute;
+  width: 48px;
+  height: 48px;
+  opacity: 0;
+  animation: rise 2.6s ease forwards;
+  will-change: transform, opacity;
+}
+@keyframes rise {
+  0% { opacity: 0; transform: translateY(0) scale(0.4) rotate(0deg); }
+  15% { opacity: 1; }
+  100% { opacity: 0; transform: translateY(-240px) scale(1) rotate(0deg); }
+}
+.icon-img { width: 100%; height: 100%; object-fit: contain; }
 
-    /* Animación de corazones flotando */
-    .content {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%,-50%);
-      width: 200px;
-      height: 200px;
-      pointer-events: none;
-    }
-
-    .float-icon {
-      position: absolute;
-      width: 50px;
-      height: 50px;
-      opacity: 0;
-      transform: scale(0.4);
-      animation: rise 2.6s ease forwards;
-    }
-
-    @keyframes rise {
-      0% {opacity: 0; transform: translateY(20px) scale(0.4);}
-      30% {opacity: 1;}
-      100% {opacity: 0; transform: translateY(-150px) scale(1);}
-    }
-
-    .i1 { left: 20%; animation-delay: .2s; }
-    .i2 { left: 60%; animation-delay: .4s; }
-    .i3 { left: 40%; animation-delay: .6s; }
-    .i4 { left: 10%; animation-delay: .8s; }
-
-    .icon-img {
-      width: 100%;
-      height: 100%;
-      object-fit: contain;
-    }
-
-    /* Zona de enlaces finales */
-    .links-container {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      width: 60%;
-      max-width: 600px;
-      gap: 50px;
-      margin-top: 150px;
-      margin-bottom: 50px;
-      position: relative;
-    }
-
-    .links-container img {
-      width: 60px;
-      height: 60px;
-      opacity: 0;
-      transform: translateX(0);
-      transition: opacity 1s ease, transform 1s cubic-bezier(.68,-0.55,.27,1.55);
-      cursor: pointer;
-    }
-
-    .links-container.show img.estrella {
-      opacity: 1;
-      transform: translateX(0); /* rebote desde izquierda */
-      animation: slideFromLeft 1s forwards;
-    }
-
-    .links-container.show img.corazon {
-      opacity: 1;
-      transform: translateX(0); /* rebote desde derecha */
-      animation: slideFromRight 1s forwards;
-    }
-
-    @keyframes slideFromLeft {
-      0% { transform: translateX(-200px); }
-      70% { transform: translateX(30px); }
-      100% { transform: translateX(0); }
-    }
-
-    @keyframes slideFromRight {
-      0% { transform: translateX(200px); }
-      70% { transform: translateX(-30px); }
-      100% { transform: translateX(0); }
-    }
-
-    .links-container img:hover {
-      transform: scale(1.2);
-    }
-
-  </style>
+/* POEMAS */
+.poems {
+  width: 90%;
+  max-width: 680px;
+  margin: 40px auto 120px;
+  text-align: center;
+  z-index: 12;
+  position: relative;
+}
+.poem {
+  font-family: "Homemade Apple", cursive;
+  font-size: 22px;
+  margin: 28px 0;
+  color: #ffdfff;
+  text-shadow: 0 0 12px rgba(255,130,210,0.25);
+  white-space: pre-line;
+  opacity: 0;
+}
+.cursor {
+  display: inline-block;
+  width: 6px;
+  background: #ffd6ff;
+  margin-left: 4px;
+  animation: blinkCursor 0.9s steps(1) infinite;
+  vertical-align: bottom;
+}
+@keyframes blinkCursor { 50% { opacity: 0; } 0% { opacity: 1; } }
+</style>
 </head>
 
 <body>
 
-  <h1>Cartas para mi princesa</h1>
+<h1>Para mi princesa</h1>
 
-  <div class="heart-wrapper">
-    <div class="big-heart" id="bigHeart"></div>
-  </div>
+<div class="heart-wrapper">
+  <div class="big-heart" id="bigHeart" title="Pulsa aquí"></div>
+</div>
 
-  <div class="content" id="iconsArea"></div>
+<!-- ICONOS DE ENLACE DEBAJO DEL CORAZÓN -->
+<div class="icon-links" id="iconLinks">
+  <a href="https://revillaxx.github.io/TeAmo/Carta2.html" target="_blank">
+    <img src="corazon.png" class="corazon" alt="corazon">
+  </a>
+  <a href="https://revillaxx.github.io/TeAmo/Index.html" target="_blank">
+    <img src="estrella.png" class="estrella" alt="estrella">
+  </a>
+</div>
 
-  <!-- Zona de enlaces finales -->
-  <div class="links-container" id="finalLinks">
-    <a href="https://revillaxx.github.io/TeAmo/Index.html" target="_blank">
-      <img src="estrella.png" alt="Estrella" class="estrella">
-    </a>
-    <a href="https://revillaxx.github.io/TeAmo/Index.html" target="_blank">
-      <img src="corazon.png" alt="Corazón" class="corazon">
-    </a>
-  </div>
+<!-- ICONOS FLOTANTES -->
+<div class="content" id="iconsArea"></div>
 
-  <script>
-    const bigHeart = document.getElementById('bigHeart');
-    const iconsArea = document.getElementById('iconsArea');
-    const finalLinks = document.getElementById('finalLinks');
+<!-- POEMAS -->
+<div class="poems" id="poems">
+  <div class="poem" id="poem1">No lo creo todavía
+estás llegando a mi lado
+y la noche es un puñado
+de estrellas y de alegría</div>
 
-    const icons = [
-      'data:image/svg+xml;utf8,<svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg"><path fill="%23ff4fa2" d="M32 56S6 38 6 20c0-7.7 6.3-14 14-14 5.4 0 10 3 12 7.4C34 9 38.6 6 44 6c7.7 0 14 6.3 14 14 0 18-26 36-26 36z"/></svg>',
-      'data:image/svg+xml;utf8,<svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg"><path fill="%23ffd86b" d="M32 4l7.9 16 17.6 2.6-12.7 12.3 3 17.5L32 44l-15.8 8.4 3-17.5L6.5 22.6 24.1 20z"/></svg>',
-      'data:image/svg+xml;utf8,<svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg"><path fill="%23ff7abf" d="M32 56S6 38 6 20c0-7.7 6.3-14 14-14 5.4 0 10 3 12 7.4C34 9 38.6 6 44 6c7.7 0 14 6.3 14 14 0 18-26 36-26 36z"/><circle cx="24" cy="26" r="3" fill="black"/><circle cx="40" cy="26" r="3" fill="black"/><path d="M26 34c2 2 10 2 12 0" stroke="black" stroke-width="2" fill="none"/></svg>',
-      'data:image/svg+xml;utf8,<svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg"><path fill="%23ffe08f" d="M32 2l9 18 20 3-14.5 14 3.5 20L32 46l-18 11 3.5-20L4 23l20-3z"/></svg>'
-    ];
+  <div class="poem" id="poem2">y aunque no siempre he entendido
+mis culpas y mis fracasos
+en cambio sé que en tus brazos
+el mundo tiene sentido</div>
 
-    let clicked = false;
+  <div class="poem" id="poem3">sé que voy a quererte sin preguntas
+sé que vas a quererme sin respuestas.</div>
 
-    bigHeart.addEventListener('click', () => {
-      if(clicked) return;
-      clicked = true;
+  <div class="poem" id="poem4">Te quiero como para leerte cada noche,
+como mi libro favorito quiero leerte,
+línea tras línea, letra por letra,
+espacio por espacio.</div>
 
-      launchIcons();
+  <div class="poem" id="poem5">Te quiero para tomarte de la mano bajo el firmamento
+y mostrarte los te amo escondidos entre las estrellas.</div>
+</div>
 
-      setTimeout(() => {
-        finalLinks.classList.add('show');
-        finalLinks.scrollIntoView({behavior: "smooth"});
-      }, 3000);
-    });
+<script>
+// ---------- SVG ICONOS FLOTANTES ----------
+const icons = [
+  'data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><path fill="%23ff4fa2" d="M32 56S6 38 6 20c0-7.7 6.3-14 14-14 5.4 0 10 3 12 7.4C34 9 38.6 6 44 6c7.7 0 14 6.3 14 14 0 18-26 36-26 36z"/></svg>',
+  'data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><path fill="%23ffd86b" d="M32 4l7.9 16 17.6 2.6-12.7 12.3 3 17.5L32 44l-15.8 8.4 3-17.5L6.5 22.6 24.1 20z"/></svg>'
+];
 
-    function launchIcons() {
-      iconsArea.innerHTML = '';
-      for (let i = 0; i < icons.length; i++) {
-        const el = document.createElement('div');
-        el.className = 'float-icon i' + (i+1);
-        el.style.animationDelay = (0.2 * i) + 's';
-        const img = document.createElement('img');
-        img.className = 'icon-img';
-        img.src = icons[i];
-        el.appendChild(img);
-        iconsArea.appendChild(el);
+// ---------- PARTICULAS ----------
+function createBackgroundParticles(){
+  for(let i=0;i<65;i++){
+    const s = document.createElement('div'); s.className='sparkle';
+    s.style.left = Math.random()*100+'vw';
+    s.style.top = (-5 - Math.random()*20)+'vh';
+    s.style.animationDuration = (5+Math.random()*6)+'s';
+    s.style.opacity = 0.4+Math.random()*0.6;
+    document.body.appendChild(s);
+    setTimeout(()=>s.remove(),14000);
+  }
+  for(let i=0;i<40;i++){
+    const h = document.createElement('div'); h.className='heartParticle';
+    h.style.left = Math.random()*100+'vw';
+    h.style.top = (-5 - Math.random()*20)+'vh';
+    h.style.animationDuration = (6+Math.random()*7)+'s';
+    h.style.opacity = 0.5+Math.random()*0.5;
+    document.body.appendChild(h);
+    setTimeout(()=>h.remove(),16000);
+  }
+}
+
+// ---------- ESTRELLAS FUGACES ----------
+function createShootingStar(){ 
+  const star=document.createElement('div'); star.className='shooting-star';
+  const startLeft=10+Math.random()*80; const startTop=5+Math.random()*10;
+  const distance=400+Math.random()*100;
+  star.style.left=startLeft+'vw'; star.style.top=startTop+'vh';
+  star.style.width='6px'; star.style.height='6px';
+  star.style.animationDuration=(0.9+Math.random()*0.8)+'s';
+  star.style.transform=`translate(0,0) rotate(-20deg)`;
+  document.body.appendChild(star);
+  setTimeout(()=>star.remove(),1200);
+}
+setInterval(createShootingStar,1500+Math.random()*800);
+
+// ---------- ICONOS FLOTANTES ----------
+let iconInterval=null;
+const iconsArea=document.getElementById('iconsArea');
+function startIcons(){
+  if (iconInterval) return;
+  iconInterval=setInterval(()=>{
+    const el=document.createElement('div'); el.className='float-icon';
+    el.style.left=(40+Math.random()*20)+'%';
+    const rot=(Math.random()*36-18);
+    el.style.transform=`translateY(0) scale(.4) rotate(${rot}deg)`;
+    const img=document.createElement('img'); img.className='icon-img';
+    img.src=icons[Math.floor(Math.random()*icons.length)];
+    el.appendChild(img); iconsArea.appendChild(el);
+    setTimeout(()=>el.remove(),2800);
+  },280);
+}
+
+// ---------- MAQUINA DE ESCRIBIR LINEA POR LINEA ----------
+function typeLinesIntoElement(el,speedRange=[35,90],linePause=700){
+  const full=el.textContent.trim();
+  const lines=full.split(/\r?\n/);
+  el.textContent=''; el.style.opacity=1;
+  let lineIndex=0;
+  function typeLine(i){
+    const line=lines[i]||''; let j=0;
+    function step(){
+      if(j<=line.length-1){
+        const ch=line[j++];
+        el.innerHTML+=ch==='\t'? '&nbsp;&nbsp;&nbsp;':ch;
+        const delay=speedRange[0]+Math.random()*(speedRange[1]-speedRange[0]);
+        setTimeout(step,delay);
+      }else{
+        if(i<lines.length-1){ el.innerHTML+='<br>'; setTimeout(()=>typeLine(i+1),linePause);}
       }
-    }
-  </script>
+    } step();
+  }
+  typeLine(0);
+}
+
+function typeAllPoems(){
+  const poems=document.querySelectorAll('.poem'); let delayStart=500;
+  poems.forEach((p,idx)=>{
+    setTimeout(()=>{ typeLinesIntoElement(p,[30,80],800); },delayStart);
+    delayStart+=6000;
+  });
+}
+
+// ---------- CLICK CORAZÓN ----------
+const bigHeart=document.getElementById('bigHeart');
+const iconLinks=document.getElementById('iconLinks');
+let clicked=false;
+bigHeart.addEventListener('click', e=>{
+  // chispa al click
+  const s=document.createElement('div'); s.className='spark';
+  s.style.left=(e.clientX-10)+'px'; s.style.top=(e.clientY-10)+'px';
+  document.body.appendChild(s); setTimeout(()=>s.remove(),500);
+
+  if (!clicked) {
+    iconLinks.style.display='flex';  // ahora aparecen los iconos
+    startIcons();
+    typeAllPoems();
+    clicked=true;
+  }
+});
+
+// ---------- ARRANQUE ----------
+createBackgroundParticles();
+</script>
 
 </body>
 </html>
-
-
