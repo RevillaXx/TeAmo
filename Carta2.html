@@ -1,114 +1,170 @@
 <!doctype html>
 <html lang="es">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Carta para la mujer de mi vida</title>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Carta para la mujer de mi vida</title>
 
-  <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
 
-  <style>
-    html, body {
-      margin: 0;
-      padding: 0;
-      font-family: "Playfair Display", serif;
-      background: linear-gradient(135deg, #f06bce 0%, #ffd1dc 30%, #d7ff6f 100%);
-      -webkit-font-smoothing: antialiased;
-      overflow-x: hidden; /* evitar desplazamiento lateral */
-    }
+<style>
+html, body {
+  margin: 0;
+  padding: 0;
+  font-family: "Playfair Display", serif;
+  background: radial-gradient(circle, #1b002d, #000);
+  color: #ffe8ff;
+  overflow-x: hidden;
+  height: 100%;
+  position: relative;
+}
 
-    body {
-      padding: 20px 10px;
-    }
+/* Frame carta */
+body { padding: 20px 10px; }
+.frame {
+  width: 100%;
+  max-width: 850px;
+  margin: 0 auto;
+  background: rgba(27,0,45,0.75);
+  padding: 26px 20px;
+  border-radius: 16px;
+  border: 1px solid rgba(255,255,255,0.1);
+  box-shadow: 0 10px 24px rgba(255,255,255,0.05);
+  box-sizing: border-box;
+  color: #ffdfff;
+  position: relative;
+  z-index: 2;
+}
 
-    .frame {
-      width: 100%;
-      max-width: 850px;
-      margin: 0 auto;              /* centrado horizontal */
-      background: linear-gradient(180deg, rgba(255,255,240,0.95), rgba(255,250,235,0.95));
-      padding: 26px 20px;
-      border-radius: 16px;
-      border: 1px solid rgba(0,0,0,0.08);
-      box-shadow: 0 10px 24px rgba(0,0,0,0.18);
-      box-sizing: border-box;      /* evita desbordamientos */
-    }
+h1 {
+  font-family: 'Pacifico', cursive;
+  text-align: center;
+  font-size: 30px;
+  margin: 0 0 10px;
+}
+.subtitle {
+  text-align: center;
+  font-size: 14px;
+  margin-bottom: 18px;
+  color: #d1c1e0;
+}
+.letter {
+  font-family: 'Pacifico', cursive;
+  font-size: 17px;
+  line-height: 1.6;
+  padding: 18px;
+  border-radius: 12px;
+  border: 1px solid rgba(255,255,255,0.15);
+  background: rgba(40,5,60,0.4);
+  box-shadow: 0 4px 12px rgba(255,255,255,0.08);
+  white-space: pre-wrap;
+  color: #ffe8ff;
+}
+.signature {
+  display: block;
+  margin-top: 20px;
+  font-size: 20px;
+  text-align: right;
+  font-family: 'Pacifico', cursive;
+  color: #ffd6ff;
+}
+@media (min-width: 600px) {
+  h1 { font-size: 42px; }
+  .letter { font-size: 20px; padding: 26px; }
+}
 
-    h1 {
-      font-family: 'Pacifico', cursive;
-      text-align: center;
-      font-size: 30px;
-      margin: 0 0 10px;
-    }
+/* ESTRELLAS */
+.star, .shootingStar {
+  position: fixed;
+  pointer-events: none;
+  z-index: 1;
+}
+.star {
+  width: 3px;
+  height: 3px;
+  border-radius: 50%;
+  background: white;
+  animation: fall 6s linear infinite;
+}
+@keyframes fall {
+  0% { transform: translateY(-10px) scale(1); opacity: 0.8; }
+  100% { transform: translateY(100vh) scale(0.5); opacity: 0; }
+}
 
-    .subtitle {
-      text-align: center;
-      font-size: 14px;
-      margin-bottom: 18px;
-      color: #6b6b6b;
-    }
-
-    .letter {
-      font-family: 'Pacifico', cursive;
-      font-size: 17px;
-      line-height: 1.6;
-      padding: 18px;
-      border-radius: 12px;
-      border: 1px solid rgba(0,0,0,0.12);
-      background: rgba(255,255,255,0.45);
-      box-shadow: 0 4px 12px rgba(0,0,0,0.12);
-      white-space: pre-wrap;
-    }
-
-    .signature {
-      display: block;
-      margin-top: 20px;
-      font-size: 20px;
-      text-align: right;
-      font-family: 'Pacifico', cursive;
-    }
-
-    @media (min-width: 600px) {
-      h1 { font-size: 42px; }
-      .letter { font-size: 20px; padding: 26px; }
-    }
-  </style>
+/* Estrellas fugaces grandes */
+.shootingStar {
+  width: 10px;
+  height: 2px;
+  background: linear-gradient(90deg, white, rgba(255,255,255,0));
+  border-radius: 2px;
+  opacity: 0.9;
+  transform: rotate(-30deg);
+  animation: shoot 2s linear infinite;
+}
+@keyframes shoot {
+  0% { transform: translate(-100px, -50px) scaleX(1); opacity: 0; }
+  10% { opacity: 1; }
+  100% { transform: translate(100vw, 100vh) scaleX(1); opacity: 0; }
+}
+</style>
 </head>
 
 <body>
-  <div class="frame">
-    <h1>Para la mujer de mi vida</h1>
-    <div class="subtitle">Una carta hecha con todo mi amor</div>
+<div class="frame">
+  <h1>Para la mujer de mi vida</h1>
+  <div class="subtitle">Una carta hecha con todo mi amor</div>
 
-    <article class="letter">
+  <article class="letter">
 Mi princesa:
-Hoy quiero escribirte algo de corazón en esta nueva pagina que te prometo nunca borrar. No es solo una carta: es una mirada al futuro que veo contigo, un futuro que cada día imagino más claro y con más ilusión, porque tú eres la mujer que quiero para mi vida entera.
+Hoy quiero escribirte algo de corazón en esta nueva página que te prometo nunca borrar. No es solo una carta: es una mirada al futuro que veo contigo, un futuro que cada día imagino más claro y con más ilusión, porque tú eres la mujer que quiero para mi vida entera.
 
-A veces cierro los ojos y veo lo que podría ser nuestro mañana… y siempre estás tú, sonriendo, caminando a mi lado de la mano, haciendo que todo tenga sentido. Y es que contigo, por primera vez, el futuro no me asusta, me emociona, lo busco.
+A veces cierro los ojos y veo lo que podría ser nuestro mañana… y siempre estás tú, sonriendo, caminando a mi lado de la mano, haciendo que todo tenga sentido. Y es que contigo, por primera vez, el futuro no me asusta, me emociona, lo busco.
 
 Sueño con el día en que tengamos nuestra propia casa. No una casa cualquiera, sino un hogar que vea y sea testigo de nuestras risas, nuestras peleas tontas, nuestras reconciliaciones llenas de abrazos, nuestras noches de película, nuestras mañanas perezosas… un lugar donde lo más bonito no será lo que tengamos, sino con quién lo tenemos y compartimos.
 
-Me imagino entrando por la puerta y verte en el sofa/mueble con esa sonrisa que me llena de ilusion, mientras yo me acerco a abrazarte por la espalda y te digo lo rico que hueles. Me veo a los dos riéndonos mientras intentamos cocinar juntos, manchándonos la cara de harina solo por el placer de jugar, porque contigo incluso lo más simple se vuelve mágico.
+Me imagino entrando por la puerta y verte en el sofá/mueble con esa sonrisa que me llena de ilusión, mientras yo me acerco a abrazarte por la espalda y te digo lo rico que hueles. Me veo a los dos riéndonos mientras intentamos cocinar juntos, manchándonos la cara de harina solo por el placer de jugar, porque contigo incluso lo más simple se vuelve mágico.
 
 Y también te imagino en uno de los momentos más hermosos de nuestra vida, cuidando juntos de nuestra hija, Sofía. La veo corriendo por la casa con tus ojos y mi sonrisa, o al revés, me da igual… porque sé que será perfecta simplemente por ser el resultado de nuestro amor. Y me veo a mí mismo despertándome en mitad de la noche para ir a verla, solo para asegurarme de que está bien, y tú mirándome con ternura desde la cama mientras dices que soy un exagerado.
 
-La imagino creciendo, rodeada de cariño, de valores, y sobre todo de un amor inmenso, un ejemplo de los dos. Veo a su hermano mayor cuidando de ella, protegiéndola como solo un hermano puede hacerlo, enseñándole cosas, acompañándola en todo lo que necesite, formando parte de ese corazón enorme que será nuestra familia.
+La imagino creciendo, rodeada de cariño, de valores, y sobre todo de un amor inmenso, un ejemplo de los dos. Veo a su hermano mayor cuidando de ella, protegiéndola como solo un hermano puede hacerlo, enseñándole cosas, acompañándola en todo lo que necesite, formando parte de ese corazón enorme que será nuestra familia.
 
-Y en medio de esa gran montaña de emociones, amor y momentos, te veo a ti… mi compañera de vida, mi princesa, mi prioridad en la vida. La mujer con la que quiero compartir mis días, mis noches, mis esfuerzos y mis sueños. La mujer con la que quiero aprender, crecer y envejecer. La mujer que hace que todo lo que imagino tenga un porqué.
+Y en medio de esa gran montaña de emociones, amor y momentos, te veo a ti… mi compañera de vida, mi princesa, mi prioridad en la vida. La mujer con la que quiero compartir mis días, mis noches, mis esfuerzos y mis sueños. La mujer con la que quiero aprender, crecer y envejecer. La mujer que hace que todo lo que imagino tenga un porqué.
 
-Porque el futuro que quiero no es increible por las cosas que tengamos…
+Porque el futuro que quiero no es increíble por las cosas que tengamos…
 es perfecto porque te tiene a ti.
-Porque sin ti ninguno de esos momentos tendría sentido.
+Porque sin ti ninguno de esos momentos tendría sentido.
 
 Gracias, mi pequeña, por existir, por iluminar mis días y por hacerme sentir que la vida aún tiene lo mejor por darme. No sé qué nos espera exactamente, pero sí sé que quiero vivirlo contigo, que quiero que seas la madre de mis hijos, mi compañera de vida, mi risa favorita, mi abrazo para curar, mi todo.
 
 Te amo más de lo que puedo explicar, y te elijo no solo hoy, sino todos los días que me queden.
 
-Con todo mi corazón 
+Con todo mi corazón
+  </article>
 
- 
-    </article>
+  <span class="signature">✨TE AMO😍</span>
+</div>
 
-    <span class="signature">✨TE AMO😍</span>
-  </div>
+<script>
+// Estrellas pequeñas
+for (let i=0; i<60; i++){
+  const s = document.createElement("div");
+  s.className = "star";
+  s.style.left = Math.random()*100 + "vw";
+  s.style.top = Math.random()*-100 + "vh";
+  s.style.animationDelay = Math.random()*6 + "s";
+  document.body.appendChild(s);
+}
+
+// Estrellas fugaces grandes
+for (let i=0; i<6; i++){
+  const s = document.createElement("div");
+  s.className = "shootingStar";
+  s.style.top = Math.random()*50 + "vh";
+  s.style.left = Math.random()*-100 + "vw";
+  s.style.animationDelay = (Math.random()*10) + "s";
+  document.body.appendChild(s);
+}
+</script>
+
 </body>
 </html>
