@@ -1,106 +1,164 @@
 <!doctype html>
 <html lang="es">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Carta para la mujer de mi vida</title>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Carta para la mujer de mi vida</title>
 
-  <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
 
-  <style>
-    html, body {
-      margin: 0;
-      padding: 0;
-      font-family: "Playfair Display", serif;
-      background: linear-gradient(135deg, #f06bce 0%, #ffd1dc 30%, #d7ff6f 100%);
-      -webkit-font-smoothing: antialiased;
-      overflow-x: hidden; /* evitar desplazamiento lateral */
-    }
+<style>
+html, body {
+  margin: 0;
+  padding: 0;
+  font-family: "Playfair Display", serif;
+  background: radial-gradient(circle, #1b002d, #000);
+  color: #ffe8ff;
+  overflow-x: hidden;
+  height: 100%;
+  position: relative;
+}
 
-    body {
-      padding: 20px 10px;
-    }
+/* Frame carta */
+body { padding: 20px 10px; }
+.frame {
+  width: 100%;
+  max-width: 850px;
+  margin: 0 auto;
+  background: rgba(27,0,45,0.75);
+  padding: 26px 20px;
+  border-radius: 16px;
+  border: 1px solid rgba(255,255,255,0.1);
+  box-shadow: 0 10px 24px rgba(255,255,255,0.05);
+  box-sizing: border-box;
+  color: #ffdfff;
+  position: relative;
+  z-index: 2;
+}
 
-    .frame {
-      width: 100%;
-      max-width: 850px;
-      margin: 0 auto;              /* centrado horizontal */
-      background: linear-gradient(180deg, rgba(255,255,240,0.95), rgba(255,250,235,0.95));
-      padding: 26px 20px;
-      border-radius: 16px;
-      border: 1px solid rgba(0,0,0,0.08);
-      box-shadow: 0 10px 24px rgba(0,0,0,0.18);
-      box-sizing: border-box;      /* evita desbordamientos */
-    }
+h1 {
+  font-family: 'Pacifico', cursive;
+  text-align: center;
+  font-size: 30px;
+  margin: 0 0 10px;
+}
+.subtitle {
+  text-align: center;
+  font-size: 14px;
+  margin-bottom: 18px;
+  color: #d1c1e0;
+}
+.letter {
+  font-family: 'Pacifico', cursive;
+  font-size: 17px;
+  line-height: 1.6;
+  padding: 18px;
+  border-radius: 12px;
+  border: 1px solid rgba(255,255,255,0.15);
+  background: rgba(40,5,60,0.4);
+  box-shadow: 0 4px 12px rgba(255,255,255,0.08);
+  white-space: pre-wrap;
+  color: #ffe8ff;
+}
+.signature {
+  display: block;
+  margin-top: 20px;
+  font-size: 20px;
+  text-align: right;
+  font-family: 'Pacifico', cursive;
+  color: #ffd6ff;
+}
+@media (min-width: 600px) {
+  h1 { font-size: 42px; }
+  .letter { font-size: 20px; padding: 26px; }
+}
 
-    h1 {
-      font-family: 'Pacifico', cursive;
-      text-align: center;
-      font-size: 30px;
-      margin: 0 0 10px;
-    }
+/* ESTRELLAS */
+.star, .shootingStar {
+  position: fixed;
+  pointer-events: none;
+  z-index: 1;
+}
+.star {
+  width: 3px;
+  height: 3px;
+  border-radius: 50%;
+  background: white;
+  animation: fall 6s linear infinite;
+}
+@keyframes fall {
+  0% { transform: translateY(-10px) scale(1); opacity: 0.8; }
+  100% { transform: translateY(100vh) scale(0.5); opacity: 0; }
+}
 
-    .subtitle {
-      text-align: center;
-      font-size: 14px;
-      margin-bottom: 18px;
-      color: #6b6b6b;
-    }
-
-    .letter {
-      font-family: 'Pacifico', cursive;
-      font-size: 17px;
-      line-height: 1.6;
-      padding: 18px;
-      border-radius: 12px;
-      border: 1px solid rgba(0,0,0,0.12);
-      background: rgba(255,255,255,0.45);
-      box-shadow: 0 4px 12px rgba(0,0,0,0.12);
-      white-space: pre-wrap;
-    }
-
-    .signature {
-      display: block;
-      margin-top: 20px;
-      font-size: 20px;
-      text-align: right;
-      font-family: 'Pacifico', cursive;
-    }
-
-    @media (min-width: 600px) {
-      h1 { font-size: 42px; }
-      .letter { font-size: 20px; padding: 26px; }
-    }
-  </style>
+/* Estrellas fugaces grandes */
+.shootingStar {
+  width: 10px;
+  height: 2px;
+  background: linear-gradient(90deg, white, rgba(255,255,255,0));
+  border-radius: 2px;
+  opacity: 0.9;
+  transform: rotate(-30deg);
+  animation: shoot 2s linear infinite;
+}
+@keyframes shoot {
+  0% { transform: translate(-100px, -50px) scaleX(1); opacity: 0; }
+  10% { opacity: 1; }
+  100% { transform: translate(100vw, 100vh) scaleX(1); opacity: 0; }
+}
+</style>
 </head>
 
 <body>
-  <div class="frame">
-    <h1>Para la mujer de mi vida</h1>
-    <div class="subtitle">Una carta hecha con todo mi amor</div>
+<div class="frame">
+  <h1>Para la mujer de mi vida</h1>
+  <div class="subtitle">Una carta hecha con todo mi amor</div>
 
-    <article class="letter">
-Mi pequeña princesa, llevo escribiendo esta carta desde que te deje en tu casa: 
+  <article class="letter">
+Mi pequeña princesa, llevo escribiendo esta carta desde que te dejé en tu casa: 
 
-te quiero abrir mi corazón de una manera sincera y tranquila, solo con la verdad que llevo dentro desde que te elegí como la mujer de mi vida, porque sí, te elegí, y te sigo eligiendo cada día, incluidos esos dias en los que tú misma dudas de lo mucho que vales, en esos momentos donde creo que estas poseida por algo desconocido, que yo mismo hare desaparecer con toda la fuerza de mi corazon, y que te hace pensar que no mereces que yo te acompañe en las dificultades, que no suelte tu mano pase lo que pase, que no me importe lo dura que sea la lucha contra cualquier adversidad que me haga daño o creas que no mereces que te ame con la fuerza con la que yo te amo.
+Te quiero abrir mi corazón de una manera sincera y tranquila, solo con la verdad que llevo dentro desde que te elegí como la mujer de mi vida, porque sí, te elegí, y te sigo eligiendo cada día, incluidos esos días en los que tú misma dudas de lo mucho que vales, en esos momentos donde creo que estás poseída por algo desconocido, que yo mismo haré desaparecer con toda la fuerza de mi corazón, y que te hace pensar que no mereces que yo te acompañe en las dificultades, que no suelte tu mano pase lo que pase, que no me importe lo dura que sea la lucha contra cualquier adversidad que me haga daño o creas que no mereces que te ame con la fuerza con la que yo te amo.
 
-Déjame decirte algo, mi princesa, tú vales lo que no esta escrito, tu valor es incalculable, vale tu luz con la que iluminas cada dia de los que te rodean, valen tus dias menos brillantes porque asi puedo aparecer yo con un abrazo de paz que te llene el corazon con todo lo que siento por ti, valen tus inseguridades porque asi yo te muestro lo confundida que estas al pensarlas porque eres luz para este mundo oscuro y tus gestos bonitos que solo un gran corazon como el tuyo puede ofrecer, valen tus risas donde me hacen enamorarme cada dia mas gracias a esa sonrisa y hasta tus silencios donde te muestran que sin decir una palabra se que me necesitas. Valen tanto porque dentro de ti siempre hay y habra una mujer tan preciosa, tan única, que a veces se le olvida que es una flor que necesita ser cuidada, no porque sea frágil, delicada o no pueda con cualquier adversidad sino porque es demasiado increible para que yo, tu principe no jure protegerla, para no regarla todos los días con amor, aunque este en cualquiera de sus cuatro fases.
+Déjame decirte algo, mi princesa, tú vales lo que no está escrito, tu valor es incalculable, vale tu luz con la que iluminas cada día de los que te rodean, valen tus días menos brillantes porque así puedo aparecer yo con un abrazo de paz que te llene el corazón con todo lo que siento por ti, valen tus inseguridades porque así yo te muestro lo confundida que estás al pensarlas porque eres luz para este mundo oscuro y tus gestos bonitos que solo un gran corazón como el tuyo puede ofrecer, valen tus risas donde me hacen enamorarme cada día más gracias a esa sonrisa y hasta tus silencios donde te muestran que sin decir una palabra se que me necesitas. Valen tanto porque dentro de ti siempre hay y habrá una mujer tan preciosa, tan única, que a veces se le olvida que es una flor que necesita ser cuidada, no porque sea frágil, delicada o no pueda con cualquier adversidad sino porque es demasiado increíble para que yo, tu príncipe no jure protegerla, para no regarla todos los días con amor, aunque esté en cualquiera de sus cuatro fases.
 
-Yo sé que a veces recibes muestras de cariño de personas que aparecen una vez por temporadas, personas que ven tu necesidad de atencion cuando lo pides o cuando ya ven que lo demuestras, porque no puedes guardarlo mas en la mochila que cargas, ya que siempre muestras una sonrisa por no preocupar a los demas, y entiendo que eso te toca el corazón, porque durante mucho tiempo pediste eso a quien nunca te lo dio. Pero también quiero que recuerdes algo que a veces se te escapa, yo estoy aquí… siempre. Yo te demuestro cada día, no una vez al mes, que te elijo, que te cuido, que tú eres mi prioridad incluso cuando la vida se me complica. Que yo no desaparezco emocionalmente, que yo no te quiero por ratos, que yo no te amo por temporada… yo te amo cada día de mi vida.
+Yo sé que a veces recibes muestras de cariño de personas que aparecen una vez por temporadas, personas que ven tu necesidad de atención cuando lo pides o cuando ya ven que lo demuestras, porque no puedes guardarlo más en la mochila que cargas, ya que siempre muestras una sonrisa por no preocupar a los demás, y entiendo que eso te toca el corazón, porque durante mucho tiempo pediste eso a quien nunca te lo dio. Pero también quiero que recuerdes algo que a veces se te escapa, yo estoy aquí… siempre. Yo te demuestro cada día, no una vez al mes, que te elijo, que te cuido, que tú eres mi prioridad incluso cuando la vida se me complica. Que yo no desaparezco emocionalmente, que yo no te quiero por ratos, que no me amo por temporada… yo te amo cada día de mi vida.
 
-Se que en algún momento te he dicho que cosas me duelen. Ha sido porque cuando uno ama tanto, todo lo que pienses me importa… hasta lo más pequeño. Pero jamás se borra tu nombre de mi corazon. Jamás he pensado en soltarte. Porque tu amor, mi pequeña, es lo único que verdaderamente cuesta encontrar en esta vida. Todo lo demás,el trabajo, las metas, la estabilidad, los sueños materiales, se pueden construir con esfuerzo y dedicación. Pero una conexión como la nuestra… esa no se encuentra dos veces. Lo nuestro es de esas cosas que suceden una vez por vida… o quizás, como a veces pienso, en todas las vidas que hemos vivido juntos.
+Sé que en algún momento te he dicho qué cosas me duelen. Ha sido porque cuando uno ama tanto, todo lo que pienses me importa… hasta lo más pequeño. Pero jamás se borra tu nombre de mi corazón. Jamás he pensado en soltarte. Porque tu amor, mi pequeña, es lo único que verdaderamente cuesta encontrar en esta vida. Todo lo demás, el trabajo, las metas, la estabilidad, los sueños materiales, se pueden construir con esfuerzo y dedicación. Pero una conexión como la nuestra… esa no se encuentra dos veces. Lo nuestro es de esas cosas que suceden una vez por vida… o quizás, como a veces pienso, en todas las vidas que hemos vivido juntos.
 
-Tú también has puesto muchisima luz en mi mundo, me has mejorado, me has calmado, me has enseñado a sentir de una manera que nunca llegue a imaginar. Pero también quiero que recuerdes algo los dias que te pongan un obstaculo ante mi... he luchado mucho y lo seguire haciendo poniendo cada dia mi granito de amor para que tus ojos volvieran y vuelvan cada dia a brillar como las estrellas que mas se iluminan en el cielo por la noche, cada caricia, cada palabra, cada detalle, cada día que te abrazo aunque estés cansada, cada vez que busco hacerte reír… todo eso lo hago porque tu sonrisa, tu felicidad, el que te sientas amada como siempre quisiste....es mi prioridad.
+Tú también has puesto muchísima luz en mi mundo, me has mejorado, me has calmado, me has enseñado a sentir de una manera que nunca llegué a imaginar. Pero también quiero que recuerdes algo los días que te pongan un obstáculo ante mi... he luchado mucho y lo seguiré haciendo poniendo cada día mi granito de amor para que tus ojos volvieran y vuelvan cada día a brillar como las estrellas que más se iluminan en el cielo por la noche, cada caricia, cada palabra, cada detalle, cada día que te abrazo aunque estés cansada, cada vez que busco hacerte reír… todo eso lo hago porque tu sonrisa, tu felicidad, el que te sientas amada como siempre quisiste.... es mi prioridad.
 
-Mi princesa, quiero que recuerdes todo lo que hemos vivido juntos, los momentos maravillosos que hemos creado, nuestras primeras veces de todas esas cosas que solo el uno al otro hemos creado, las risas, los abrazos, las conversaciones, las miradas que no hacen falta ni palabras… esos momentos pesan infinitamente más que cualquier obstáculo que hayamos tenido,y te prometo que siempre será así. Porque contigo aprendí que vale más un solo minuto de amor verdadero que mil días sin sentir nada.
+Mi princesa, quiero que recuerdes todo lo que hemos vivido juntos, los momentos maravillosos que hemos creado, nuestras primeras veces de todas esas cosas que solo el uno al otro hemos creado, las risas, los abrazos, las conversaciones, las miradas que no hacen falta ni palabras… esos momentos pesan infinitamente más que cualquier obstáculo que hayamos tenido, y te prometo que siempre será así. Porque contigo aprendí que vale más un solo minuto de amor verdadero que mil días sin sentir nada.
 
-Hoy te lo quiero repetir con el corazón en la mano: TE AMO CON TODA MI ALMA Y TODO MI CORAZON, Y YO ME SIENTO IGUALMENTE DE AMADO POR TI, SOLO HAY QUE VER TUS OJOS AL MIRARME FIJAMENTE A LOS MIOS.  No pienso dejar tu mano, no pienso rendirme, no pienso dejarte sola jamás. Porque tú eres la mujer con la que quiero caminar hasta el final de mis días, la mujer con la que quiero construir un hogar, una familia, una vida hecha de amor, paciencia, complicidad y conexion, donde seamos el ejemplo de nuestros futuros hijos.
+Hoy te lo quiero repetir con el corazón en la mano: TE AMO CON TODA MI ALMA Y TODO MI CORAZÓN, Y YO ME SIENTO IGUALMENTE DE AMADO POR TI, SOLO HAY QUE VER TUS OJOS AL MIRARME FIJAMENTE A LOS MIOS. No pienso dejar tu mano, no pienso rendirme, no pienso dejarte sola jamás. Porque tú eres la mujer con la que quiero caminar hasta el final de mis días, la mujer con la que quiero construir un hogar, una familia, una vida hecha de amor, paciencia, complicidad y conexión, donde seamos el ejemplo de nuestros futuros hijos.
 
 Gracias por existir, por elegirme, por dejarme amarte.
 Y gracias por permitirme seguir cuidando a esta flor tan preciosa, que eres tú. 
-    </article>
+  </article>
 
-    <span class="signature">✨TE AMO😍</span>
-  </div>
+  <span class="signature">✨TE AMO😍</span>
+</div>
+
+<script>
+// Estrellas pequeñas
+for (let i=0; i<60; i++){
+  const s = document.createElement("div");
+  s.className = "star";
+  s.style.left = Math.random()*100 + "vw";
+  s.style.top = Math.random()*-100 + "vh";
+  s.style.animationDelay = Math.random()*6 + "s";
+  document.body.appendChild(s);
+}
+
+// Estrellas fugaces grandes
+for (let i=0; i<6; i++){
+  const s = document.createElement("div");
+  s.className = "shootingStar";
+  s.style.top = Math.random()*50 + "vh";
+  s.style.left = Math.random()*-100 + "vw";
+  s.style.animationDelay = (Math.random()*10) + "s";
+  document.body.appendChild(s);
+}
+</script>
+
 </body>
 </html>
